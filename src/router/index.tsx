@@ -1,9 +1,4 @@
-import About from "@/pages/About";
-import Home from "@/pages/Home";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import routes from "./routes";
 
-export default createBrowserRouter([
-  { path: "/", element: <Navigate to="/home" /> },
-  { path: "/home", element: <Home /> },
-  { path: "/about", element: <About /> },
-]);
+export default createBrowserRouter(routes);
