@@ -1,0 +1,22 @@
+.login {
+  width: 100%;
+  height: 100%;
+  background-image: url("@/assets/login-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.img {
+  left: 50%;
+  top: -60px;
+  margin-left: -60px;
+}
+
+.form {
+  margin-right: 45px;
+}
+
+/* 验证码文本框右侧内边距 */
+.check-code .arco-input-inner-wrapper.arco-input-inner-wrapper-large {
+  padding-right: 0px;
+}
