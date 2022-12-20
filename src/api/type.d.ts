@@ -6,9 +6,20 @@ export interface Result<T = any> {
 }
 
 type LoginType = {
-  clientToken: state.code;
+  clientToken: number;
   code: string;
   loginName: string;
   loginType: number;
   password: string;
+};
+
+type LoginResponseType = {
+  userId: number | null;
+  userName: string | null;
+  roleCode: string | null;
+  token: string | null;
+  success: boolean;
+  regionId: string | null;
+  msg: string;
+  repair: boolean;
 };

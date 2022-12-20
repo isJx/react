@@ -1,5 +1,5 @@
 import { instance as api } from "@/axios/index";
-import { LoginType, Result } from "./type";
+import { LoginResponseType, LoginType, Result } from "./type";
 
 enum API {
   getCheckCode = "/api/user-service/user/imageCode/",
@@ -13,5 +13,5 @@ export const getCheckCode = (id: number) => {
 };
 
 export const login = (data: LoginType) => {
-  return api.post(API.login, data);
+  return api.post<unknown, Result<LoginResponseType>>(API.login, data);
 };

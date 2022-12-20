@@ -1,6 +1,9 @@
 import "./index.css";
 
-import { getCheckCode, login } from "@/api";
+import { getCheckCode } from "@/api";
+import { LoginResponseType, LoginType } from "@/api/type";
+import { loginAsync } from "@/store/loginSlice";
+import { AppDispatch, RootState } from "@/store/store";
 import {
   Button,
   Form,
@@ -9,10 +12,15 @@ import {
   Input,
 } from "@arco-design/web-react";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const FormItem = Form.Item;
 
 const Login: React.FC = () => {
   const formRef = useRef<FormInstance>(null);
+  const dispatch: AppDispatch = useDispatch();
+  const { token }: LoginResponseType = useSelector(
+    (state: RootState) => state.login
+  );
 
   type State = {
     img: string;
@@ -35,29 +43,26 @@ const Login: React.FC = () => {
   const handleSubmit = async () => {
     if (formRef.current) {
       const value = await formRef.current.validate();
-      console.log(value, state.code);
-      const data = {
+      const data: LoginType = {
         clientToken: state.code,
         code: value.checkCode,
         loginName: value.userName,
         loginType: 0,
         password: value.passWord,
       };
-      login(data).then((res) => {
-        console.log(res);
-      });
+
+      dispatch(loginAsync(data));
     }
   };
 
   useEffect(() => {
-    console.log("ok");
-
     init();
   }, [state.code]);
 
   return (
     <div className="login flex justify-center items-center">
       <div className="w-518px h-388px bg-white rounded-4 relative">
+        {token}
         <img
           src="src/assets/logo.png"
           className="img w30 h30 absolute"
