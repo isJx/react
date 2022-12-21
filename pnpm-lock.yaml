@@ -4,12 +4,14 @@ specifiers:
   '@arco-design/web-react': ^2.42.1
   '@reduxjs/toolkit': ^1.9.1
   '@types/node': ^18.11.10
+  '@types/pubsub-js': ^1.8.3
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
   '@types/react-redux': ^7.1.24
   '@unocss/preset-uno': ^0.47.5
   '@vitejs/plugin-react': ^2.2.0
   axios: ^1.2.1
+  pubsub-js: ^1.9.4
   react: ^18.2.0
   react-dom: ^18.2.0
   react-redux: ^8.0.5
@@ -22,6 +24,7 @@ dependencies:
   '@arco-design/web-react': 2.42.1_ib3m5ricvtkl2cll7qpr2f6lvq
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
   axios: 1.2.1
+  pubsub-js: 1.9.4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-redux: 8.0.5_yqqa5ithnjtlkxisuaub7c4kpa
@@ -29,6 +32,7 @@ dependencies:
 
 devDependencies:
   '@types/node': 18.11.10
+  '@types/pubsub-js': 1.8.3
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.9
   '@types/react-redux': 7.1.24
@@ -507,6 +511,10 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+
+  /@types/pubsub-js/1.8.3:
+    resolution: {integrity: sha512-6BqY04dh2UV1dNV690tyJVJYQ0U6qBH4tU+FCwY1Mhl8jOPOP9qiIvgLnB59cVik/E6/R002oXZpGiDm+2C8eA==}
+    dev: true
 
   /@types/react-dom/18.0.9:
     resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
@@ -1553,6 +1561,10 @@ packages:
 
   /proxy-from-env/1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+    dev: false
+
+  /pubsub-js/1.9.4:
+    resolution: {integrity: sha512-hJYpaDvPH4w8ZX/0Fdf9ma1AwRgU353GfbaVfPjfJQf1KxZ2iHaHl3fAUw1qlJIR5dr4F3RzjGaWohYUEyoh7A==}
     dev: false
 
   /queue-microtask/1.2.3:
