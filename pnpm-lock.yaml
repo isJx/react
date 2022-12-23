@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@arco-design/web-react': ^2.42.1
   '@reduxjs/toolkit': ^1.9.1
+  '@types/js-cookie': ^3.0.2
   '@types/node': ^18.11.10
   '@types/pubsub-js': ^1.8.3
   '@types/react': ^18.0.24
@@ -11,6 +12,7 @@ specifiers:
   '@unocss/preset-uno': ^0.47.5
   '@vitejs/plugin-react': ^2.2.0
   axios: ^1.2.1
+  js-cookie: ^3.0.1
   pubsub-js: ^1.9.4
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -24,6 +26,7 @@ dependencies:
   '@arco-design/web-react': 2.42.1_ib3m5ricvtkl2cll7qpr2f6lvq
   '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
   axios: 1.2.1
+  js-cookie: 3.0.1
   pubsub-js: 1.9.4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -31,6 +34,7 @@ dependencies:
   react-router-dom: 6.4.4_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
+  '@types/js-cookie': 3.0.2
   '@types/node': 18.11.10
   '@types/pubsub-js': 1.8.3
   '@types/react': 18.0.26
@@ -504,6 +508,10 @@ packages:
     dependencies:
       '@types/react': 18.0.26
       hoist-non-react-statics: 3.3.2
+
+  /@types/js-cookie/3.0.2:
+    resolution: {integrity: sha512-6+0ekgfusHftJNYpihfkMu8BWdeHs9EOJuGcSofErjstGPfPGEu9yTu4t460lTzzAMl2cM5zngQJqPMHbbnvYA==}
+    dev: true
 
   /@types/node/18.11.10:
     resolution: {integrity: sha512-juG3RWMBOqcOuXC643OAdSA525V44cVgGV6dUDuiFtss+8Fk5x1hI93Rsld43VeJVIeqlP9I7Fn9/qaVqoEAuQ==}
@@ -1349,6 +1357,11 @@ packages:
     resolution: {integrity: sha512-L3BJStEf5NAqNuzrpfbN71dp43mYIcBUlCRea/vdyv5dW/AYa1d4bpelko4SHdY3I6eN9Wzyasxirj1/vv5kmg==}
     hasBin: true
     dev: true
+
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: false
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
