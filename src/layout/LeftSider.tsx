@@ -1,5 +1,6 @@
 import { Menu } from "@arco-design/web-react";
 import { IconBug, IconHome } from "@arco-design/web-react/icon";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const LeftSider: React.FC = () => {
@@ -8,19 +9,28 @@ const LeftSider: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  let defaultSelectedKeys: string[] = [];
+  type State = {
+    defaultSelectedKeys: string[];
+  };
+
+  const [state, setState] = useState<State>({
+    defaultSelectedKeys: [],
+  });
 
   const handleClickMenuItem = (key: string) => {
     navigate(key);
   };
 
-  defaultSelectedKeys = [location.pathname];
+  useEffect(() => {
+    setState({ defaultSelectedKeys: [location.pathname] });
+  }, [location.pathname]);
+
   return (
     <div className="bg-blue " style={{ height: "calc(100vh - 60px)" }}>
       <Menu
         style={{ width: 200, height: "100%" }}
         hasCollapseButton
-        defaultSelectedKeys={defaultSelectedKeys}
+        selectedKeys={state.defaultSelectedKeys}
         onClickMenuItem={handleClickMenuItem}
       >
         <MenuItem key="/layout/home">
