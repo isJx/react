@@ -1,4 +1,5 @@
 import Layout from "@/layout/Index";
+import Error from "@/pages/403";
 import About from "@/pages/About";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
@@ -14,6 +15,7 @@ const routes: RouteObject[] = [
       { path: "/layout", element: <Navigate to="/layout/home" /> },
       { path: "home", element: <Home /> },
       { path: "task", children: [{ path: "business", element: <About /> }] },
+      { path: "*", element: <Error /> },
     ],
   },
 ];
