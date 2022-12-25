@@ -6,7 +6,7 @@ import store from "./store/store";
 
 export default function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
