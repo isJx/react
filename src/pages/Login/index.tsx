@@ -67,7 +67,7 @@ const Login: React.FC = () => {
     <div className="login flex justify-center items-center">
       <div className="w-518px h-388px bg-white rounded-4 relative">
         <img
-          src="src/assets/logo.png"
+          src="/logo-round.png"
           className="img w30 h30 absolute"
           alt="logo"
         />
