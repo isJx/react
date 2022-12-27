@@ -12,6 +12,7 @@
     "@arco-design/web-react": "^2.42.1",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
+    "dayjs": "^1.11.7",
     "js-cookie": "^3.0.1",
     "pubsub-js": "^1.9.4",
     "react": "^18.2.0",
