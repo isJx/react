@@ -36,7 +36,10 @@ const LeftSider: React.FC = (props) => {
   }, [location.pathname]);
 
   return (
-    <div className="bg-blue " style={{ height: "calc(100vh - 60px)" }}>
+    <div
+      className="bg-blue select-none"
+      style={{ height: "calc(100vh - 60px)" }}
+    >
       <Menu
         style={{ width: 200, height: "100%" }}
         hasCollapseButton
