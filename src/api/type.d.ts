@@ -23,3 +23,20 @@ type LoginResponseType = {
   msg: string;
   repair: boolean;
 };
+
+type CollectReportResponse = {
+  cancelTotal: number;
+  completedTotal: number;
+  date: null;
+  progressTotal: null;
+  repair: boolean;
+  total: number;
+  workerCount: number;
+};
+
+type TopValueRes = {
+  amount: number;
+  count: number;
+  skuId: string;
+  skuName: string;
+};

@@ -1,0 +1,21 @@
+.work-item {
+  background-image: url("@/assets/bg1.png"), url("@/assets/bg2.png");
+  background-repeat: no-repeat;
+  background-position: 0px 2px, calc(100% - 12px) 100%;
+}
+
+.item p:first-child {
+  margin: 0px;
+}
+
+.item P:last-child {
+  margin: 0px;
+  font-size: 12px;
+  color: #91a7dc;
+}
+
+.count {
+  background-image: url("@/assets/bg3.png");
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
