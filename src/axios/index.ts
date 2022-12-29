@@ -1,19 +1,31 @@
 import router from "@/router";
 import { getToken } from "@/utils";
 import { Message } from "@arco-design/web-react";
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
+import { CreateAxiosOptions } from "./type";
 
 const baseURL = "http://likede2-admin.itheima.net/likede/api/";
 
-const instance = axios.create({ baseURL });
+const defaultOpts: CreateAxiosOptions = {
+  baseURL,
+  requestOptions: {
+    withToken: true,
+  },
+};
+
+const instance = axios.create(defaultOpts);
 
 instance.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: CreateAxiosOptions) => {
     if (!config.headers) {
       config.headers = {};
     }
 
-    config.headers.Authorization = getToken();
+    const token = getToken();
+
+    if (token && config.requestOptions?.withToken !== false) {
+      config.headers.Authorization = token;
+    }
 
     return config;
   },

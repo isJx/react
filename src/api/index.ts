@@ -19,11 +19,18 @@ enum API {
 export const getCheckCode = (id: number) => {
   return api.get<unknown, Result<Blob>>(`${API.getCheckCode}${id}`, {
     responseType: "blob",
+    requestOptions: {
+      withToken: false,
+    },
   });
 };
 
 export const login = (data: LoginType) => {
-  return api.post<unknown, Result<LoginResponseType>>(API.login, data);
+  return api.post<unknown, Result<LoginResponseType>>(API.login, data, {
+    requestOptions: {
+      withToken: false,
+    },
+  });
 };
 
 export const collectReport = (start: string, end: string) => {
