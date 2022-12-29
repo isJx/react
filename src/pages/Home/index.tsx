@@ -74,8 +74,8 @@ export default function Home() {
     <div>
       <div className="flex ">
         <div className="flex   w75% mr-20px">
-          <div className="work-item w60% bg-#e9f3ff mr-20px radius-20 p-20px text-16px font-semibold h-126px">
-            工单统计
+          <div className="work-item w60% bg-#e9f3ff mr-20px radius-20 p-20px h-126px">
+            <p className="m-0px text-16px font-semibold">工单统计</p>
             <div className="flex justify-around c-#072074 text-36px font-semibold mt-15px">
               <div className="item">
                 <p>{state.total}</p>
@@ -95,8 +95,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="count w40% bg-#fbefe8 radius-20 h-126px p-20px  p-20px text-16px font-semibold">
-            销售统计
+          <div className="count w40% bg-#fbefe8 radius-20 h-126px p-20px ">
+            <p className="m-0px text-16px font-semibold">销售统计</p>
             <div className="flex justify-around c-#072074 text-36px font-semibold mt-15px">
               <div className="text-#ff5757">
                 <p className="m-0px">{state.count}</p>
@@ -109,8 +109,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w25% bg-#fff radius-20 p-20px text-16px font-semibold">
-          商品热榜
+        <div className="w25% bg-#fff radius-20 p-20px ">
+          <p className="m-0px text-16px font-semibold">商品热榜</p>
           {state.topValue.map((item, index) => {
             return (
               <div key={index} className="flex items-center">
