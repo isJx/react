@@ -66,6 +66,19 @@ export default function Home() {
     });
   };
 
+  const getIcon = (value: number) => {
+    switch (value) {
+      case 0:
+        return "first";
+      case 1:
+        return "second";
+      case 2:
+        return "third";
+      default:
+        return "default";
+    }
+  };
+
   useEffect(() => {
     init();
   }, []);
@@ -75,7 +88,12 @@ export default function Home() {
       <div className="flex ">
         <div className="flex   w75% mr-20px">
           <div className="work-item w60% bg-#e9f3ff mr-20px radius-20 p-20px h-126px">
-            <p className="m-0px text-16px font-semibold">工单统计</p>
+            <p className="m-0px text-16px font-semibold">
+              工单统计
+              <span className="ml-10px text-12px c-#999 font-400">
+                2022.12.01 ~ {dayjs().format("YYYY.MM.DD")}
+              </span>
+            </p>
             <div className="flex justify-around c-#072074 text-36px font-semibold mt-15px">
               <div className="item">
                 <p>{state.total}</p>
@@ -95,8 +113,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="count w40% bg-#fbefe8 radius-20 h-126px p-20px ">
-            <p className="m-0px text-16px font-semibold">销售统计</p>
+
+          <div className="count w40% bg-#fbefe8 box-border radius-20 h-126px p-20px ">
+            <p className="m-0px text-16px font-semibold">
+              销售统计
+              <span className="ml-10px text-12px c-#999 font-400">
+                2022.12.01 ~ {dayjs().format("YYYY.MM.DD")}
+              </span>
+            </p>
             <div className="flex justify-around c-#072074 text-36px font-semibold mt-15px">
               <div className="text-#ff5757">
                 <p className="m-0px">{state.count}</p>
@@ -110,14 +134,24 @@ export default function Home() {
           </div>
         </div>
         <div className="w25% bg-#fff radius-20 p-20px ">
-          <p className="m-0px text-16px font-semibold">商品热榜</p>
+          <p className="m-0px text-16px font-semibold">
+            商品热榜
+            <span className="ml-10px text-12px c-#999 font-400">
+              2022.12.01 ~ {dayjs().format("YYYY.MM.DD")}
+            </span>
+          </p>
           {state.topValue.map((item, index) => {
             return (
-              <div key={index} className="flex items-center">
-                <div className="mr-10px w-20px text-center text-10px font-400">
+              <div key={index} className="flex items-center my-17px">
+                <div
+                  className={
+                    getIcon(index) +
+                    " mr-10px w-25px h-25px text-center text-10px font-400 pt-3px"
+                  }
+                >
                   {index + 1}
                 </div>
-                <div className="flex flex-1 justify-between my-12px">
+                <div className="flex flex-1 justify-between ">
                   <span className="font-500 c-#333">{item.skuName}</span>
                   <span className="text-#737589 text-14px font-400">
                     {item.count}单

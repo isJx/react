@@ -19,3 +19,26 @@
   background-repeat: no-repeat;
   background-position: 100% 100%;
 }
+
+.first {
+  background: url("@/assets/金牌.png") no-repeat;
+}
+
+.second {
+  background: url("@/assets/银牌.png") no-repeat;
+}
+
+.third {
+  background: url("@/assets/铜牌.png") no-repeat;
+}
+
+.default {
+  background: url("@/assets/默认.png") no-repeat;
+}
+
+.first,
+.second,
+.third,
+.default {
+  background-position: center center;
+}
