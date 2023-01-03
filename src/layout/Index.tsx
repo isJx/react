@@ -11,7 +11,7 @@ import { TopBar } from "./TopBar";
 const MyLayout: React.FC = () => {
   return (
     <>
-      <Layout>
+      <Layout style={{ userSelect: "none" }}>
         <Header>
           <TopBar />
         </Header>
