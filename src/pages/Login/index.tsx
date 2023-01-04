@@ -91,6 +91,7 @@ const Login: React.FC = () => {
             <FormItem field={"checkCode"} className="check-code">
               <Input
                 placeholder="验证码"
+                onPressEnter={handleSubmit}
                 suffix={
                   <Image
                     onClick={handleClick}
