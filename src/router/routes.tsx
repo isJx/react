@@ -1,12 +1,12 @@
-import Layout from "@/layout/Index";
 import Error from "@/pages/403";
-import Home from "@/pages/Home";
-import Login from "@/pages/Login";
 import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
 
 const Business = lazy(() => import("@/pages/Task/Business"));
 const Operation = lazy(() => import("@/pages/Task/Operation"));
+const Login = lazy(() => import("@/pages/Login"));
+const Home = lazy(() => import("@/pages/Home"));
+const Layout = lazy(() => import("@/layout/Index"));
 
 const routes: RouteObject[] = [
   { path: "/", element: <Navigate to="/login" /> },
