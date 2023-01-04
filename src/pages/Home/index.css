@@ -1,5 +1,5 @@
 .work-item {
-  background-image: url("@/assets/bg1.png"), url("@/assets/bg2.png");
+  background-image: url(@/assets/bg1.png), url("@/assets/bg2.png");
   background-repeat: no-repeat;
   background-position: 0px 2px, calc(100% - 12px) 100%;
 }
@@ -41,4 +41,15 @@
 .third,
 .default {
   background-position: center center;
+}
+
+.info {
+  background: linear-gradient(135deg, transparent, #f8f8f9 0) 0 0,
+    linear-gradient(-135deg, transparent 12px, #f8f8f9 0) 100% 0,
+    linear-gradient(-45deg, transparent, #f8f8f9 0) 100% 100%,
+    linear-gradient(45deg, transparent 12px, #f8f8f9 0) 0 100%;
+  background-size: 50% 50%;
+  width: 150px;
+  height: 230px;
+  background-repeat: no-repeat;
 }

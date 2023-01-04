@@ -1,8 +1,10 @@
 import { instance as api } from "@/axios/index";
 import {
+  AmountCollectRes,
   CollectReportResponse,
   LoginResponseType,
   LoginType,
+  NodeCollectRes,
   Result,
   TopValueRes,
 } from "./type";
@@ -14,6 +16,11 @@ enum API {
   orderCount = "order-service/report/orderCount", //获取一定时间范围之内的订单总数
   orderAmount = "order-service/report/orderAmount", //获取一定时间范围之内的收入
   topValue = "order-service/report/skuTop", //获取销售前几的商品
+  amountCollect = "order-service/report/amountCollect", // 获取销售额统计
+  regionCollect = "order-service/report/regionCollect", // 根据地区汇总销售额数据(销售量分布)
+  nodeCollect = "vm-service/node/nodeCollect", // 合作商点位汇总统计
+  nodeCount = "vm-service/node/count", //获取点位总数
+  partnerCount = "user-service/partner/count", //获取合作商总数
 }
 
 export const getCheckCode = (id: number) => {
@@ -57,4 +64,32 @@ export const skuTop = (topValue: number, start: string, end: string) => {
   return api.get<unknown, Result<TopValueRes[]>>(
     `${API.topValue}/${topValue}/${start}/${end}`
   );
+};
+
+export const amountCollect = (
+  collectType: number,
+  start: string,
+  end: string
+) => {
+  return api.get<unknown, Result<AmountCollectRes>>(
+    `${API.amountCollect}/${collectType}/${start}/${end}`
+  );
+};
+
+export const regionCollect = (start: string, end: string) => {
+  return api.get<unknown, Result<AmountCollectRes>>(
+    `${API.regionCollect}/${start}/${end}`
+  );
+};
+
+export const nodeCollect = () => {
+  return api.get<unknown, Result<NodeCollectRes[]>>(API.nodeCollect);
+};
+
+export const nodeCount = () => {
+  return api.get<unknown, Result<number>>(API.nodeCount);
+};
+
+export const partnerCount = () => {
+  return api.get<unknown, Result<number>>(API.partnerCount);
 };

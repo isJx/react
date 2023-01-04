@@ -40,3 +40,13 @@ type TopValueRes = {
   skuId: string;
   skuName: string;
 };
+
+type AmountCollectRes = {
+  series: number[];
+  xAxis: string[];
+};
+
+type NodeCollectRes = {
+  name: string;
+  value: number;
+};
