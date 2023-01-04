@@ -6,7 +6,7 @@ const Content: React.FC = () => {
       style={{
         height: "calc(100vh - 60px)",
       }}
-      className="bg-#f8fafd p20px box-border"
+      className="p20px box-border"
     >
       <Outlet />
     </div>
