@@ -20,3 +20,11 @@ export const logout = () => {
   Cookie.remove("token");
   Cookie.remove("userInfo");
 };
+
+export const setCookieValue = (name: string, value: string) => {
+  return Cookie.set(name, value);
+};
+
+export const getCookieValue = (name: string) => {
+  return Cookie.get(name);
+};

@@ -3,6 +3,7 @@ import "./index.css";
 
 import "@arco-design/web-react/dist/css/arco.css";
 
+import "@/i18n/index";
 import React from "react";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
