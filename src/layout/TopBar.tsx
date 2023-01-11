@@ -61,7 +61,7 @@ export const TopBar: FunctionComponent = () => {
   }, []);
 
   return (
-    <div className="h60px bg-amber flex items-center justify-between p-x-4">
+    <div className="h60px bg-amber flex items-center justify-between p-x-4 top-bar">
       <div>
         <Image width={"88px"} src="/logo.png" preview={false} />
       </div>
