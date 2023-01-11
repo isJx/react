@@ -43,6 +43,7 @@ export const TopBar: FunctionComponent = () => {
       defaultValue: value == "zh" ? "中文" : "English",
     }));
     i18n.changeLanguage(value);
+    PubSub.publish("SwitchLanguage");
   };
 
   const options = {

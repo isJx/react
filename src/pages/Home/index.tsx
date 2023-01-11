@@ -18,10 +18,13 @@ import { Radio } from "@arco-design/web-react";
 import dayjs from "dayjs";
 
 import echarts from "@/echarts";
+import { useTranslation } from "react-i18next";
 
 const RadioGroup = Radio.Group;
 
 export default function Home() {
+  const { t } = useTranslation();
+
   type State = {
     total: number;
     success: number;
@@ -133,11 +136,11 @@ export default function Home() {
   };
 
   const handleRadioChange = (value: string) => {
-    if (value === "周") {
+    if (value === "周" || value === "Week") {
       getAmountCollect();
       getRegionCollect();
     }
-    if (value === "月") {
+    if (value === "月" || value === "Month") {
       getAmountCollect(
         dayjs().format("YYYY-MM-01"),
         dayjs().format("YYYY-MM-DD")
@@ -163,7 +166,7 @@ export default function Home() {
     myChart.setOption({
       title: {
         left: "center",
-        text: "销售额趋势图",
+        text: t("销售额趋势图"),
       },
       tooltip: {
         trigger: "axis",
@@ -218,7 +221,7 @@ export default function Home() {
       title: [
         {
           left: "center",
-          text: "销售额分布",
+          text: t("销售额分布"),
         },
       ],
       tooltip: {
@@ -254,19 +257,19 @@ export default function Home() {
         const week = dayjs(item).day();
         switch (week) {
           case 1:
-            return "星期一";
+            return t("星期一");
           case 2:
-            return "星期二";
+            return t("星期二");
           case 3:
-            return "星期三";
+            return t("星期三");
           case 4:
-            return "星期四";
+            return t("星期四");
           case 5:
-            return "星期五";
+            return t("星期五");
           case 6:
-            return "星期六";
+            return t("星期六");
           default:
-            return "星期日";
+            return t("星期日");
         }
       });
       const series = data.series.map((item) => item / 100);
@@ -293,25 +296,37 @@ export default function Home() {
     getRegionCollect();
   }, []);
 
+  useEffect(() => {
+    const subToken: string = PubSub.subscribe("SwitchLanguage", () => {
+      getAmountCollect();
+      getRegionCollect();
+    });
+    return () => {
+      PubSub.unsubscribe(subToken);
+    };
+  });
+
   return (
     <div>
       <div className="flex items-start">
         <div className="flex w75% flex-wrap pr-20px">
           <div className="work-item w58% bg-#e9f3ff radius-20 p-20px h-206px box-border mr-2%">
             <p className="m-0px text-16px font-semibold">
-              工单统计
+              {t("工单统计")}
               <span className="ml-10px text-12px c-#999 font-400">
                 2022.12.01 ~ {dayjs().format("YYYY.MM.DD")}
               </span>
             </p>
-            <div className="flex justify-around c-#072074 text-36px font-semibold mt-30px">
+            <div className="flex  c-#072074 text-36px font-semibold mt-30px">
               <div className="item">
                 <p>{state.total}</p>
-                <p>工单总数（个）</p>
+                <p title={t("工单总数（个）") as string}>
+                  {t("工单总数（个）")}
+                </p>
               </div>
               <div className="item">
                 <p>{state.success}</p>
-                <p>完成工单（个）</p>
+                <p>{t("完成工单（个）")}</p>
               </div>
               <div className="item">
                 <p>{state.ing}</p>
@@ -326,7 +341,7 @@ export default function Home() {
 
           <div className="count w40% bg-#fbefe8 box-border radius-20 h-206px p-20px ">
             <p className="m-0px text-16px font-semibold">
-              销售统计
+              {t("销售统计")}
               <span className="ml-10px text-12px c-#999 font-400">
                 2022.12.01 ~ {dayjs().format("YYYY.MM.DD")}
               </span>
@@ -346,7 +361,7 @@ export default function Home() {
           <div className="mt-20px radius-20 bg-#fff w-100% h-425px p-20px box-border overflow-hidden">
             <div className="flex justify-between">
               <p className="m-0 text-16px font-semibold">
-                销售数据
+                {t("销售数据")}
                 <span className="ml-10px text-12px c-#999 font-400">
                   2022.12.01 ~ {dayjs().format("YYYY.MM.DD")}
                 </span>
@@ -355,10 +370,10 @@ export default function Home() {
                 onChange={handleRadioChange}
                 type="button"
                 size="small"
-                defaultValue="周"
+                defaultValue={t("周")}
               >
-                <Radio value="周">周</Radio>
-                <Radio value="月">月</Radio>
+                <Radio value={t("周")}>{t("周")}</Radio>
+                <Radio value={t("月")}>{t("月")}</Radio>
               </RadioGroup>
             </div>
             <div className="flex justify-between h100%">
@@ -369,7 +384,7 @@ export default function Home() {
         </div>
         <div className="w25% bg-#fff radius-20 p-20px ">
           <p className="m-0px text-16px font-semibold">
-            商品热榜
+            {t("商品热榜")}
             <span className="ml-10px text-12px c-#999 font-400">
               2022.12.01 ~ {dayjs().format("YYYY.MM.DD")}
             </span>
