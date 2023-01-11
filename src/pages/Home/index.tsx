@@ -152,6 +152,8 @@ export default function Home() {
     }
   };
 
+  let myChart: any, myChart2: any;
+
   const renderAmountCollectEcharts = (series: number[], xAxis: string[]) => {
     let chartDom = document.getElementById("main")!;
 
@@ -161,7 +163,7 @@ export default function Home() {
       echartsInstance.dispose();
     }
 
-    let myChart = echarts.init(chartDom);
+    myChart = echarts.init(chartDom);
 
     myChart.setOption({
       title: {
@@ -215,7 +217,7 @@ export default function Home() {
       echartsInstance2.dispose();
     }
 
-    let myChart2 = echarts.init(chartDom2);
+    myChart2 = echarts.init(chartDom2);
 
     myChart2.setOption({
       title: [
@@ -290,21 +292,33 @@ export default function Home() {
     });
   };
 
+  const redrawEcharts = () => {
+    myChart.resize();
+    myChart2.resize();
+  };
+
   useEffect(() => {
     init();
     getAmountCollect();
     getRegionCollect();
-  }, []);
 
-  useEffect(() => {
+    // 订阅多语言改变
     const subToken: string = PubSub.subscribe("SwitchLanguage", () => {
       getAmountCollect();
       getRegionCollect();
     });
+
+    // 监听窗口改变
+    window.addEventListener("resize", redrawEcharts);
+
     return () => {
+      // 移除订阅
       PubSub.unsubscribe(subToken);
+
+      // 移除窗口改变监听
+      window.removeEventListener("resize", redrawEcharts);
     };
-  });
+  }, []);
 
   return (
     <div>
