@@ -4,14 +4,28 @@
   background-position: 0px 2px, calc(100% - 12px) 100%;
 }
 
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
 .item p:first-child {
   margin: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item P:last-child {
   margin: 0px;
   font-size: 12px;
   color: #91a7dc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .count {
