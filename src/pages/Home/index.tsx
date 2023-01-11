@@ -18,6 +18,7 @@ import { Radio } from "@arco-design/web-react";
 import dayjs from "dayjs";
 
 import echarts from "@/echarts";
+import { getCookieValue } from "@/utils";
 import { useTranslation } from "react-i18next";
 
 const RadioGroup = Radio.Group;
@@ -35,6 +36,7 @@ export default function Home() {
     topValue: TopValueRes[];
     nodeCount: number;
     partnerCount: number;
+    defaultValue: string;
   };
   const [state, setState] = useState<State>({
     total: 0,
@@ -46,6 +48,7 @@ export default function Home() {
     topValue: [],
     nodeCount: 0,
     partnerCount: 0,
+    defaultValue: "周",
   });
 
   const init = () => {
@@ -136,6 +139,8 @@ export default function Home() {
   };
 
   const handleRadioChange = (value: string) => {
+    setState((state) => ({ ...state, defaultValue: value }));
+
     if (value === "周" || value === "Week") {
       getAmountCollect();
       getRegionCollect();
@@ -298,12 +303,22 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // 初始化单选框的值
+    setState((state) => ({
+      ...state,
+      defaultValue: getCookieValue("i18n") === "zh" ? "周" : "Week",
+    }));
+
     init();
     getAmountCollect();
     getRegionCollect();
 
     // 订阅多语言改变
     const subToken: string = PubSub.subscribe("SwitchLanguage", () => {
+      setState((state) => ({
+        ...state,
+        defaultValue: getCookieValue("i18n") === "zh" ? "周" : "Week",
+      }));
       getAmountCollect();
       getRegionCollect();
     });
@@ -384,7 +399,7 @@ export default function Home() {
                 onChange={handleRadioChange}
                 type="button"
                 size="small"
-                defaultValue={t("周")}
+                value={state.defaultValue}
               >
                 <Radio value={t("周")}>{t("周")}</Radio>
                 <Radio value={t("月")}>{t("月")}</Radio>
