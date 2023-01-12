@@ -1,11 +1,14 @@
 import { instance as api } from "@/axios/index";
 import {
+  AllTaskStatus,
   AmountCollectRes,
   CollectReportResponse,
   LoginResponseType,
   LoginType,
   NodeCollectRes,
   Result,
+  SearchParamsType,
+  SearchRes,
   TopValueRes,
 } from "./type";
 
@@ -21,6 +24,8 @@ enum API {
   nodeCollect = "vm-service/node/nodeCollect", // 合作商点位汇总统计
   nodeCount = "vm-service/node/count", //获取点位总数
   partnerCount = "user-service/partner/count", //获取合作商总数
+  allTaskStatus = "task-service/task/allTaskStatus", // 工单状态列表
+  search = "/task-service/task/search", // 工单搜索
 }
 
 export const getCheckCode = (id: number) => {
@@ -92,4 +97,14 @@ export const nodeCount = () => {
 
 export const partnerCount = () => {
   return api.get<unknown, Result<number>>(API.partnerCount);
+};
+
+export const allTaskStatus = () => {
+  return api.get<unknown, Result<AllTaskStatus[]>>(API.allTaskStatus);
+};
+
+export const search = (params: SearchParamsType) => {
+  return api.get<unknown, Result<SearchRes>>(API.search, {
+    params,
+  });
 };

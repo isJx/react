@@ -50,3 +50,56 @@ type NodeCollectRes = {
   name: string;
   value: number;
 };
+
+type AllTaskStatus = {
+  statusId: number;
+  statusName: string;
+};
+
+type SearchParamsType = {
+  pageIndex?: number;
+  pageSize?: number;
+  taskCode?: string;
+  status?: string;
+  isRepair?: boolean;
+  totalCount?: string;
+};
+
+type TaskStatusTypeEntityType = {
+  statusId: number;
+  statusName: string;
+};
+
+type TaskType = {
+  typeId: number;
+  typeName: string;
+  type: number;
+};
+
+type CurrentPageRecordsType = {
+  addr: string;
+  assignorId: number;
+  createTime: string;
+  createType: number;
+  desc: string;
+  expect: null;
+  innerCode: string;
+  productTypeId: number;
+  regionId: string;
+  taskCode: string;
+  taskId: string;
+  taskStatus: number;
+  taskStatusTypeEntity: TaskStatusTypeEntityType;
+  taskType: TaskType;
+  updateTime: string;
+  userId: number;
+  userName: string;
+};
+
+type SearchRes = {
+  currentPageRecords: CurrentPageRecordsType[];
+  pageIndex: string;
+  pageSize: string;
+  totalCount: string;
+  totalPage: string;
+};
