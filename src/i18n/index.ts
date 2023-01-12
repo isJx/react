@@ -11,7 +11,7 @@ i18n
   .use(initReactI18next)
   // 初始化 i18next
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: "zh",
     interpolation: {
       escapeValue: false,
