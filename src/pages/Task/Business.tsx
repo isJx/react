@@ -179,8 +179,8 @@ export default function Operate() {
           重置
         </Button>
       </div>
-      <div className="content bg-#fff mt-20px">
-        <div className="btn p-20px">
+      <div className="content bg-#fff mt-20px p-10px">
+        <div className="btn pb-20px pt-10px">
           <Button status="warning" icon={<IconPlus />}>
             新建
           </Button>
