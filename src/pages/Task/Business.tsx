@@ -6,13 +6,23 @@ import {
 } from "@/api/type";
 import {
   Button,
+  Image,
   Input,
+  Modal,
   Select,
   Table,
   TableColumnProps,
 } from "@arco-design/web-react";
-import { IconPlus, IconRefresh, IconSearch } from "@arco-design/web-react/icon";
+import {
+  IconCheckCircleFill,
+  IconInfoCircleFill,
+  IconPlus,
+  IconRefresh,
+  IconSearch,
+} from "@arco-design/web-react/icon";
 import { useEffect, useState } from "react";
+
+import "./index.less";
 
 const Option = Select.Option;
 
@@ -21,6 +31,8 @@ export default function Operate() {
     status: AllTaskStatus[];
     dataList: CurrentPageRecordsType[];
     params: SearchParamsType;
+    modalVisible: boolean;
+    currentDetails: CurrentPageRecordsType;
   };
   const [state, setState] = useState<State>({
     status: [],
@@ -33,6 +45,8 @@ export default function Operate() {
       status: "",
       totalCount: "",
     },
+    modalVisible: false,
+    currentDetails: {},
   });
 
   const columns: TableColumnProps[] = [
@@ -66,7 +80,7 @@ export default function Operate() {
       title: "工单状态",
       dataIndex: "taskStatus",
       render: (col, record, index) => {
-        return state.status[record.taskStatus - 1].statusName;
+        return state.status[record.taskStatus - 1]?.statusName;
       },
     },
     { title: "运营人员", dataIndex: "userName" },
@@ -121,7 +135,14 @@ export default function Operate() {
     });
   };
 
-  const showDetail = (row: CurrentPageRecordsType) => {};
+  const showDetail = (row: CurrentPageRecordsType) => {
+    console.log("row", row);
+    setState((state) => ({
+      ...state,
+      modalVisible: true,
+      currentDetails: row,
+    }));
+  };
 
   // 分页变化时的回调；
   const handlePaginationChange = (pageIndex: number, pageSize: number) => {
@@ -201,6 +222,79 @@ export default function Operate() {
           }}
         />
       </div>
+      <Modal
+        title="工单详情"
+        visible={state.modalVisible}
+        footer={
+          <div style={{ textAlign: "center" }}>
+            <Button status="warning">重新创建</Button>
+          </div>
+        }
+        onCancel={() => {
+          setState((state) => ({ ...state, modalVisible: false }));
+        }}
+        style={{ width: "550px" }}
+      >
+        <div>
+          <div className="flex items-center bg-#ececec63 relative py-10px px-20px">
+            {state.currentDetails.taskStatusTypeEntity?.statusName == "完成" ? (
+              <IconCheckCircleFill
+                style={{ color: "#79e192", fontSize: "32px" }}
+              />
+            ) : (
+              <IconInfoCircleFill style={{ color: "#666", fontSize: "32px" }} />
+            )}
+
+            <span className="ml-10px">
+              {state.currentDetails.taskStatusTypeEntity?.statusName}
+            </span>
+            <Image
+              width={90}
+              src={
+                state.currentDetails.taskStatusTypeEntity?.statusName == "完成"
+                  ? "/src/assets/success.png"
+                  : "/src/assets/cancel.png"
+              }
+              alt="lamp"
+              className="absolute right-50px bottom-0px"
+            />
+          </div>
+        </div>
+        <div className="details flex flex-wrap  text-#606266 mt-20px">
+          <div className="detail-item">
+            <p>设备编号：</p>
+            <p>{state.currentDetails.innerCode}</p>
+          </div>
+          <div className="detail-item">
+            <p>创建日期：</p>
+            <p>{state.currentDetails.createTime}</p>
+          </div>
+          <div className="detail-item">
+            <p>取消日期：</p>
+            <p>{state.currentDetails.updateTime}</p>
+          </div>
+          <div className="detail-item">
+            <p>运营人员：</p>
+            <p>{state.currentDetails.userName}</p>
+          </div>
+          <div className="detail-item">
+            <p>工单类型：</p>
+            <p>{state.currentDetails.taskType?.typeName}</p>
+          </div>
+          <div className="detail-item">
+            <p>补货数量：</p>
+            <p>补货详情</p>
+          </div>
+          <div className="detail-item">
+            <p>工单方式：</p>
+            <p>{state.currentDetails.createType == 1 ? "手动" : "自动"}</p>
+          </div>
+          <div className="detail-item">
+            <p>取消原因：</p>
+            <p>{state.currentDetails.desc}</p>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

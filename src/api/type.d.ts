@@ -77,23 +77,23 @@ type TaskType = {
 };
 
 type CurrentPageRecordsType = {
-  addr: string;
-  assignorId: number;
-  createTime: string;
-  createType: number;
-  desc: string;
-  expect: null;
-  innerCode: string;
-  productTypeId: number;
-  regionId: string;
-  taskCode: string;
-  taskId: string;
-  taskStatus: number;
-  taskStatusTypeEntity: TaskStatusTypeEntityType;
-  taskType: TaskType;
-  updateTime: string;
-  userId: number;
-  userName: string;
+  addr?: string;
+  assignorId?: number;
+  createTime?: string;
+  createType?: number;
+  desc?: string;
+  expect?: null;
+  innerCode?: string;
+  productTypeId?: number;
+  regionId?: string;
+  taskCode?: string;
+  taskId?: string;
+  taskStatus?: number;
+  taskStatusTypeEntity?: TaskStatusTypeEntityType;
+  taskType?: TaskType;
+  updateTime?: string;
+  userId?: number;
+  userName?: string;
 };
 
 type SearchRes = {
