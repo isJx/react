@@ -53,6 +53,10 @@ export const TopBar: FunctionComponent = () => {
 
   const optinoKeys = Object.keys(options) as [keyof typeof options];
 
+  const toHome = () => {
+    navigate("/layout/home");
+  };
+
   useEffect(() => {
     setState(() => ({
       ...state,
@@ -62,7 +66,7 @@ export const TopBar: FunctionComponent = () => {
 
   return (
     <div className="h60px bg-amber flex items-center justify-between p-x-4 top-bar">
-      <div>
+      <div onClick={toHome}>
         <Image width={"88px"} src="/logo.png" preview={false} />
       </div>
       <div className="flex items-center">
