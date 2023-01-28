@@ -60,7 +60,7 @@ export const TopBar: FunctionComponent = () => {
   useEffect(() => {
     setState(() => ({
       ...state,
-      defaultValue: getCookieValue("i18n") == "zh" ? "中文" : "English",
+      defaultValue: getCookieValue("i18n") == "en" ? "English" : "中文",
     }));
   }, []);
 
