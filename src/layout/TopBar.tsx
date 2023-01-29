@@ -77,6 +77,7 @@ export const TopBar: FunctionComponent = () => {
           value={state.defaultValue}
           suffixIcon={<p></p>}
           onChange={handleChange}
+          defaultActiveFirstOption={false}
         >
           {optinoKeys.map((option, index) => (
             <Option key={index} value={option} style={{ textAlign: "center" }}>
