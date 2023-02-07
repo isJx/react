@@ -7,6 +7,7 @@ const Operation = lazy(() => import("@/pages/Task/Operation"));
 const Login = lazy(() => import("@/pages/Login"));
 const Home = lazy(() => import("@/pages/Home"));
 const Layout = lazy(() => import("@/layout/Index"));
+const Region = lazy(() => import("@/pages/Node/Region"));
 
 const routes: RouteObject[] = [
   { path: "/", element: <Navigate to="/login" /> },
@@ -23,6 +24,10 @@ const routes: RouteObject[] = [
           { path: "business", element: <Business /> },
           { path: "operation", element: <Operation /> },
         ],
+      },
+      {
+        path: "node",
+        children: [{ path: "region", element: <Region /> }],
       },
       { path: "*", element: <Error /> },
     ],

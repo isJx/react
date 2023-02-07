@@ -103,3 +103,24 @@ type SearchRes = {
   totalCount: string;
   totalPage: string;
 };
+
+type RegionSearchReq = {
+  pageIndex: number;
+  pageSize: number;
+  name?: string;
+};
+
+type TableData = {
+  id: string;
+  name: string;
+  nodeCount: number;
+  remark: string;
+};
+
+type RegionSearchRes = {
+  currentPageRecords: TableData[];
+  pageIndex: string;
+  pageSize: string;
+  totalCount: string;
+  totalPage: string;
+};

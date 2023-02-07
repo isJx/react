@@ -27,4 +27,7 @@ export default {
   设备类型管理: "Device Type Management",
   商品管理: "Commodity management",
   商品类型: "Commodity types",
+  查询: "Search",
+  区域搜索: "Area Search",
+  新建: "Create",
 };

@@ -6,6 +6,8 @@ import {
   LoginResponseType,
   LoginType,
   NodeCollectRes,
+  RegionSearchReq,
+  RegionSearchRes,
   Result,
   SearchParamsType,
   SearchRes,
@@ -25,7 +27,8 @@ enum API {
   nodeCount = "vm-service/node/count", //获取点位总数
   partnerCount = "user-service/partner/count", //获取合作商总数
   allTaskStatus = "task-service/task/allTaskStatus", // 工单状态列表
-  search = "/task-service/task/search", // 工单搜索
+  search = "task-service/task/search", // 工单搜索
+  regionSearch = "vm-service/region/search",
 }
 
 export const getCheckCode = (id: number) => {
@@ -105,6 +108,12 @@ export const allTaskStatus = () => {
 
 export const search = (params: SearchParamsType) => {
   return api.get<unknown, Result<SearchRes>>(API.search, {
+    params,
+  });
+};
+
+export const regionSearch = (params: RegionSearchReq) => {
+  return api.get<unknown, Result<RegionSearchRes>>(API.regionSearch, {
     params,
   });
 };
