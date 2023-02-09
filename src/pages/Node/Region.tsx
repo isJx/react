@@ -12,6 +12,8 @@ import { IconPlus, IconSearch } from "@arco-design/web-react/icon";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import ChangeComponent from "./components/ChangeComponent";
+
 const ButtonGroup = Button.Group;
 
 export default function Region() {
@@ -22,12 +24,16 @@ export default function Region() {
     params: RegionSearchReq;
     data: TableData[];
     totalCount: number;
+    modalVisible: boolean;
+    currentItemData: TableData;
   };
 
   const [state, setState] = useState<State>({
     params: { pageIndex: 1, pageSize: 10, name: "" },
     data: [],
     totalCount: 0,
+    modalVisible: false,
+    currentItemData: {},
   });
 
   const columns: TableColumnProps[] = [
@@ -44,8 +50,8 @@ export default function Region() {
       title: "操作",
       width: "250px",
       fixed: "right",
-      render() {
-        return Operate;
+      render(col, item, index) {
+        return Operate(item);
       },
     },
   ];
@@ -81,6 +87,18 @@ export default function Region() {
     }));
   };
 
+  const handleChange = (item: TableData) => {
+    setState((state) => ({
+      ...state,
+      modalVisible: true,
+      currentItemData: item,
+    }));
+  };
+
+  const updateModal = () => {
+    setState((state) => ({ ...state, modalVisible: false }));
+  };
+
   useEffect(() => {
     init();
   }, []);
@@ -89,15 +107,19 @@ export default function Region() {
     init();
   }, [state.params.pageIndex, state.params.name]);
 
-  const Operate = (
-    <ButtonGroup>
-      <Button type="text">查看详情</Button>
-      <Button type="text">修改</Button>
-      <Button type="text" status="danger" onClick={handleDelete}>
-        删除
-      </Button>
-    </ButtonGroup>
-  );
+  function Operate(item: TableData) {
+    return (
+      <ButtonGroup>
+        <Button type="text">查看详情</Button>
+        <Button type="text" onClick={() => handleChange(item)}>
+          修改
+        </Button>
+        <Button type="text" status="danger" onClick={handleDelete}>
+          删除
+        </Button>
+      </ButtonGroup>
+    );
+  }
 
   return (
     <>
@@ -125,6 +147,15 @@ export default function Region() {
           />
         </div>
       </div>
+      {state.modalVisible ? (
+        <ChangeComponent
+          updateModal={updateModal}
+          currentItemData={state.currentItemData}
+          init={init}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 }

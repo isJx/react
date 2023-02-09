@@ -29,6 +29,7 @@ enum API {
   allTaskStatus = "task-service/task/allTaskStatus", // 工单状态列表
   search = "task-service/task/search", // 工单搜索
   regionSearch = "vm-service/region/search",
+  setupRegion = "vm-service/region", //修改区域
 }
 
 export const getCheckCode = (id: number) => {
@@ -116,4 +117,11 @@ export const regionSearch = (params: RegionSearchReq) => {
   return api.get<unknown, Result<RegionSearchRes>>(API.regionSearch, {
     params,
   });
+};
+
+export const setupRegion = (
+  id: string,
+  data: { regionName: string; remark: string }
+) => {
+  return api.put<unknown, Result<boolean>>(API.setupRegion + `/${id}`, data);
 };

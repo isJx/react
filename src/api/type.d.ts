@@ -111,10 +111,10 @@ type RegionSearchReq = {
 };
 
 type TableData = {
-  id: string;
-  name: string;
-  nodeCount: number;
-  remark: string;
+  id?: string;
+  name?: string;
+  nodeCount?: number;
+  remark?: string;
 };
 
 type RegionSearchRes = {
