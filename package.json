@@ -1,6 +1,7 @@
 {
   "name": "react-project",
   "private": true,
+  "packageManager": "pnpm@7.33.5",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
